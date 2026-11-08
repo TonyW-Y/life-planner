@@ -1,0 +1,269 @@
+@import 'tailwindcss';
+@import '@fontsource/nunito/400.css';
+@import '@fontsource/nunito/600.css';
+@import '@fontsource/nunito/700.css';
+@import '@fontsource/nunito/800.css';
+
+/* ---------- Theme tokens ---------- */
+:root,
+[data-theme='light'] {
+  --bg: #fff8f1;
+  --bg-2: #fdeee4;
+  --surface: #ffffff;
+  --surface-2: #fff3ea;
+  --text: #4a3b35;
+  --muted: #9a8478;
+  --primary: #f19bb0;
+  --primary-ink: #ffffff;
+  --primary-soft: #fde2e8;
+  --accent: #8fc9b9;
+  --accent-soft: #dcf1ea;
+  --warn: #f2b45c;
+  --warn-soft: #fdeccf;
+  --border: #f1e1d6;
+  --shadow: 0 6px 20px -8px rgba(160, 110, 90, 0.25);
+  --cat-lecture: #a8c8f0;
+  --cat-clinical: #b9a7ec;
+  --cat-study: #f7b5c6;
+  --cat-exam: #f6a77f;
+  --cat-personal: #9fd8c2;
+  --cat-rest: #f8dc8a;
+  --cat-other: #d8c7bc;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #22201f;
+  --bg-2: #2b2827;
+  --surface: #302c2b;
+  --surface-2: #3a3534;
+  --text: #f3e9e4;
+  --muted: #b3a49c;
+  --primary: #c7b3f5;
+  --primary-ink: #231d33;
+  --primary-soft: #3e3655;
+  --accent: #8fd0bd;
+  --accent-soft: #2f4741;
+  --warn: #f0c27a;
+  --warn-soft: #4a3d27;
+  --border: #423c3a;
+  --shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.6);
+  --cat-lecture: #6f93c4;
+  --cat-clinical: #8f7dce;
+  --cat-study: #c98299;
+  --cat-exam: #c9805e;
+  --cat-personal: #6eaa94;
+  --cat-rest: #c4a95c;
+  --cat-other: #8c7f78;
+  color-scheme: dark;
+}
+
+[data-theme='brown'] {
+  --bg: #f5e9dc;
+  --bg-2: #ecdac7;
+  --surface: #fffaf4;
+  --surface-2: #f3e3d1;
+  --text: #4b2e1f;
+  --muted: #8f6e58;
+  --primary: #b9774a;
+  --primary-ink: #fffaf4;
+  --primary-soft: #ead2bd;
+  --accent: #d6a86b;
+  --accent-soft: #f2e0c4;
+  --warn: #d99a4e;
+  --warn-soft: #f4ddbd;
+  --border: #e3cdb6;
+  --shadow: 0 6px 20px -8px rgba(110, 70, 40, 0.3);
+  --cat-lecture: #c9a882;
+  --cat-clinical: #a98467;
+  --cat-study: #d99c7a;
+  --cat-exam: #c7754a;
+  --cat-personal: #a9b98a;
+  --cat-rest: #e3c27e;
+  --cat-other: #cdb8a3;
+  color-scheme: light;
+}
+
+[data-theme='joey'] {
+  --bg: #fff0f5;
+  --bg-2: #ffe0ec;
+  --surface: #ffffff;
+  --surface-2: #fff4f8;
+  --text: #6b3550;
+  --muted: #b07894;
+  --primary: #ff86b0;
+  --primary-ink: #ffffff;
+  --primary-soft: #ffd9e7;
+  --accent: #c9a7ff;
+  --accent-soft: #efe4ff;
+  --warn: #ffb37a;
+  --warn-soft: #ffe7d4;
+  --border: #ffd3e3;
+  --shadow: 0 8px 22px -8px rgba(255, 110, 160, 0.35);
+  --cat-lecture: #b9d3ff;
+  --cat-clinical: #d6b9ff;
+  --cat-study: #ffa8c8;
+  --cat-exam: #ffb08f;
+  --cat-personal: #a8e6cf;
+  --cat-rest: #ffe39a;
+  --cat-other: #f2cfe0;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-line: var(--border);
+  --font-sans: 'Nunito', ui-rounded, system-ui, sans-serif;
+  --shadow-soft: var(--shadow);
+}
+
+/* ---------- Base ---------- */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+[data-theme='joey'] body,
+body:has([data-theme='joey']) {
+  background-image: radial-gradient(circle at 20% 10%, #ffe3ee 0, transparent 40%),
+    radial-gradient(circle at 90% 80%, #f3e6ff 0, transparent 45%);
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+}
+button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+::selection {
+  background: var(--primary-soft);
+}
+
+/* ---------- Reusable cozy components ---------- */
+@utility card {
+  @apply rounded-3xl bg-surface p-4 shadow-soft border border-line;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 font-bold transition active:scale-95 disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-primary text-primary-ink shadow-soft hover:brightness-105;
+}
+@utility btn-soft {
+  @apply btn bg-primary-soft text-ink hover:brightness-97;
+}
+@utility btn-ghost {
+  @apply btn bg-transparent text-ink hover:bg-surface-2;
+}
+@utility icon-btn {
+  @apply inline-flex h-11 w-11 items-center justify-center rounded-full text-lg transition hover:bg-surface-2 active:scale-90;
+}
+@utility input {
+  @apply min-h-11 w-full rounded-2xl border-2 border-line bg-surface-2 px-4 py-2 outline-none transition focus:border-primary;
+}
+@utility chip {
+  @apply inline-flex min-h-9 items-center gap-1 rounded-full border-2 border-line bg-surface px-3 text-sm font-semibold transition;
+}
+@utility chip-on {
+  @apply border-primary bg-primary-soft;
+}
+@utility label {
+  @apply mb-1 block text-sm font-bold text-muted;
+}
+@utility h1 {
+  @apply text-2xl font-extrabold tracking-tight;
+}
+@utility h2 {
+  @apply text-lg font-extrabold;
+}
+
+/* Joey mode: little bow accents on primary buttons */
+[data-theme='joey'] .btn-primary::before {
+  content: '🎀';
+  font-size: 0.9em;
+}
+
+/* ---------- Animations ---------- */
+@keyframes float-up {
+  from {
+    transform: translateY(0) scale(0.6);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-70px) scale(1.2);
+    opacity: 0;
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.animate-bob {
+  animation: bob 4s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
