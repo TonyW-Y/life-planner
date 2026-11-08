@@ -29,5 +29,5 @@ export default defineConfig({
       devOptions: { enabled: false },
     }),
   ],
-  test: { environment: 'node' },
+  test: { environment: 'node', include: ['src/**/*.test.ts'] },
 })

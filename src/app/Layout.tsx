@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Suspense } from 'react'
 import { PomPals } from '../features/pups/PomPals'
 import { useSetting } from '../lib/useSetting'
 import { Toaster } from './Toaster'
@@ -74,7 +75,9 @@ export function Layout() {
           transition={{ duration: 0.25 }}
           className="mx-auto max-w-6xl px-4 py-4 md:px-8 md:py-8"
         >
-          <Outlet />
+          <Suspense fallback={<div className="py-20 text-center text-3xl">🐾</div>}>
+            <Outlet />
+          </Suspense>
         </motion.div>
       </main>
 
