@@ -6,7 +6,11 @@ declare const self: ServiceWorkerGlobalScope
 
 cleanupOutdatedCaches()
 precacheAndRoute(self.__WB_MANIFEST)
-registerRoute(new NavigationRoute(createHandlerBoundToURL('/index.html')))
+const BASE = import.meta.env.BASE_URL
+/** app paths like '/study/timer' → full URL inside wherever the app is hosted */
+const appUrl = (path = '/') => new URL(path.replace(/^\//, ''), self.registration.scope).href
+
+registerRoute(new NavigationRoute(createHandlerBoundToURL(`${BASE}index.html`)))
 
 self.addEventListener('message', (e) => {
   if (e.data?.type === 'SKIP_WAITING') self.skipWaiting()
@@ -24,8 +28,8 @@ self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title ?? 'Cozy Planner 🐾', {
       body: data.body ?? '',
-      icon: '/icon.svg',
-      badge: '/icon.svg',
+      icon: `${BASE}icon.svg`,
+      badge: `${BASE}icon.svg`,
       tag: data.tag,
       data: { url: data.url ?? '/' },
     }),
@@ -34,7 +38,7 @@ self.addEventListener('push', (event) => {
 
 self.addEventListener('notificationclick', (event) => {
   event.notification.close()
-  const url = (event.notification.data?.url as string) ?? '/'
+  const url = appUrl((event.notification.data?.url as string) ?? '/')
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((wins) => {
       const w = wins.find((c) => 'focus' in c)

@@ -39,7 +39,7 @@ export function AccountCard() {
             className="flex flex-wrap gap-2"
             onSubmit={async (e) => {
               e.preventDefault()
-              const { error } = await supabase!.auth.signInWithOtp({ email: input.trim(), options: { emailRedirectTo: window.location.origin } })
+              const { error } = await supabase!.auth.signInWithOtp({ email: input.trim(), options: { emailRedirectTo: window.location.origin + import.meta.env.BASE_URL } })
               if (error) toast(error.message, { emoji: '⚠️' })
               else setSent(true)
             }}

@@ -28,7 +28,7 @@ export function Layout() {
       {/* Desktop sidebar */}
       <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col gap-1 border-r border-line bg-surface/70 p-4 backdrop-blur md:flex">
         <div className="mb-4 flex items-center gap-2 px-2 text-xl font-extrabold">
-          <img src="/icon.svg" alt="" className="h-9 w-9" /> Cozy Planner
+          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-9 w-9" /> Cozy Planner
         </div>
         {NAV.map((n) => (
           <NavLink
@@ -57,7 +57,7 @@ export function Layout() {
         {/* Mobile header */}
         <header className="sticky top-0 z-30 flex items-center justify-between bg-bg/80 px-4 pb-2 pt-[max(env(safe-area-inset-top),12px)] backdrop-blur md:hidden">
           <div className="flex items-center gap-2 text-lg font-extrabold">
-            <img src="/icon.svg" alt="" className="h-8 w-8" /> Cozy
+            <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-8 w-8" /> Cozy
           </div>
           <div className="flex">
             <button className="icon-btn" aria-label="Search" onClick={() => window.dispatchEvent(new Event('cozy:command'))}>

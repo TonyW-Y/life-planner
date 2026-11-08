@@ -39,7 +39,7 @@ export function App() {
   }, [theme])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       {theme === 'joey' && <JoeyDecor />}
       <Routes>
         <Route element={<Layout />}>

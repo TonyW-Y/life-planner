@@ -4,7 +4,11 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// '/' for Vercel/Netlify; '/life-planner/' when building for GitHub Pages (set by the workflow)
+const base = process.env.BASE_PATH || '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     tailwindcss(),
@@ -21,9 +25,11 @@ export default defineConfig({
         theme_color: '#f7c5d0',
         background_color: '#fff8f1',
         display: 'standalone',
-        start_url: '/',
+        start_url: base,
+        scope: base,
+        id: base,
         icons: [
-          { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          { src: `${base}icon.svg`, sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
         ],
       },
       devOptions: { enabled: false },

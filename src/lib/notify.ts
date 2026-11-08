@@ -1,10 +1,12 @@
 /** Show a system notification if allowed (works while the app is open or in the background). */
+const ICON = `${import.meta.env.BASE_URL}icon.svg`
+
 export async function notify(title: string, body: string, opts: { tag?: string; url?: string } = {}) {
   try {
     if (!('Notification' in window) || Notification.permission !== 'granted') return false
     const reg = await navigator.serviceWorker?.getRegistration()
-    if (reg) await reg.showNotification(title, { body, icon: '/icon.svg', badge: '/icon.svg', tag: opts.tag, data: { url: opts.url ?? '/' } })
-    else new Notification(title, { body, icon: '/icon.svg', tag: opts.tag })
+    if (reg) await reg.showNotification(title, { body, icon: ICON, badge: ICON, tag: opts.tag, data: { url: opts.url ?? '/' } })
+    else new Notification(title, { body, icon: ICON, tag: opts.tag })
     return true
   } catch {
     return false

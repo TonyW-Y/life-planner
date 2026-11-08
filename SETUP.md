@@ -29,6 +29,14 @@ npm run e2e          # browser tests (first run: npx playwright install chromium
 
 (Netlify and Cloudflare Pages also work; `public/_redirects` is included.)
 
+### Or: GitHub Pages (free)
+
+1. In the repo on GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. Push to `main`. The workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) builds and publishes to `https://<your-username>.github.io/<repo-name>/` (this repo: `https://tonyw-y.github.io/life-planner/`).
+3. To turn on sync and push reminders, add repo secrets (**Settings → Secrets and variables → Actions**): `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_VAPID_PUBLIC_KEY`. Then re-run the workflow. In Supabase step 3 below, use the Pages URL (including `/life-planner/`) as the Site URL and redirect URL.
+
+Pick **one** address (Vercel *or* Pages) for her to use. Data saved on the device belongs to the address it was opened at.
+
 ## 2. Sync with Supabase (free)
 
 1. Create a project at [supabase.com](https://supabase.com) (Free plan).
