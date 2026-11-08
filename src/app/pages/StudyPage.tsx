@@ -17,7 +17,7 @@ export function StudyPage() {
       <h1 className="h1">Study 📚</h1>
       <div className="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1">
         {TABS.map((t) => (
-          <NavLink key={t.to} to={t.to} className={({ isActive }) => `chip shrink-0 !min-h-11 !px-4 ${isActive ? 'chip-on' : ''}`}>
+          <NavLink key={t.to} to={`/study/${t.to}`} className={({ isActive }) => `chip shrink-0 !min-h-11 !px-4 ${isActive ? 'chip-on' : ''}`}>
             {t.emoji} {t.label}
           </NavLink>
         ))}
