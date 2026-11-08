@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { PomPals } from '../features/pups/PomPals'
 import { useSetting } from '../lib/useSetting'
 import { Toaster } from './Toaster'
+import { TimerEngine } from '../features/study/useTimer'
+import { TimerPill } from '../features/study/TimerPill'
 
 const NAV = [
   { to: '/', label: 'Home', icon: '🏡' },
@@ -75,7 +77,7 @@ export function Layout() {
 
       {/* corner pups on other pages */}
       {showPups && !pupsOnPage && (
-        <div className="fixed bottom-24 right-2 z-20 md:bottom-4 md:right-4">
+        <div className={`fixed bottom-24 right-2 z-20 md:bottom-4 md:right-4 ${loc.pathname.startsWith('/calendar') ? 'hidden md:block' : ''}`}>
           <PomPals size={80} compact speech={false} />
         </div>
       )}
@@ -99,6 +101,8 @@ export function Layout() {
         </div>
       </nav>
       <Toaster />
+      <TimerEngine />
+      <TimerPill />
     </div>
   )
 }

@@ -45,7 +45,7 @@ export function useOccurrences(from: Date, to: Date) {
 
 export function CalendarPage() {
   const [params, setParams] = useSearchParams()
-  const [savedView, setSavedView] = useSetting<View>('calView', 'week')
+  const [savedView, setSavedView] = useSetting<View>('calView', typeof window !== 'undefined' && window.innerWidth < 768 ? 'day' : 'week')
   const view = (params.get('v') as View) || savedView
   const cursor = params.get('d') ? parseISO(params.get('d')!) : startOfDay(new Date())
   const setView = (v: View) => {
@@ -228,7 +228,7 @@ export function CalendarPage() {
       )}
 
       {(view === 'day' || view === 'week') && (
-        <div className="grid gap-4 lg:grid-cols-[1fr_260px]">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_260px]">
           <TimeGrid
             days={days}
             occurrences={occurrences}
