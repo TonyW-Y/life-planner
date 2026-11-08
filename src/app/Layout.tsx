@@ -6,6 +6,8 @@ import { Toaster } from './Toaster'
 import { TimerEngine } from '../features/study/useTimer'
 import { TimerPill } from '../features/study/TimerPill'
 import { ReminderEngine } from '../features/reminders/ReminderEngine'
+import { CommandBar } from '../features/command/CommandBar'
+import { Onboarding } from '../features/onboarding/Onboarding'
 
 const NAV = [
   { to: '/', label: 'Home', icon: '🏡' },
@@ -47,7 +49,7 @@ export function Layout() {
         >
           <span className="text-xl">⚙️</span> Settings
         </NavLink>
-        <p className="px-3 text-xs text-muted">Tip: press ⌘K to search or add anything</p>
+        <button className="px-3 text-left text-xs text-muted" onClick={() => window.dispatchEvent(new Event('cozy:command'))}>Tip: press ⌘K to search or add anything</button>
       </aside>
 
       <main className="min-w-0 flex-1 pb-28 md:pb-8">
@@ -105,6 +107,8 @@ export function Layout() {
       <TimerEngine />
       <TimerPill />
       <ReminderEngine />
+      <CommandBar />
+      <Onboarding />
     </div>
   )
 }
