@@ -13,6 +13,10 @@ export async function notify(title: string, body: string, opts: { tag?: string; 
 
 export async function askNotificationPermission() {
   if (!('Notification' in window)) return 'unsupported' as const
-  if (Notification.permission === 'default') return Notification.requestPermission()
-  return Notification.permission
+  const p = Notification.permission === 'default' ? await Notification.requestPermission() : Notification.permission
+  if (p === 'granted') {
+    const { ensurePushSubscription } = await import('../features/reminders/push')
+    void ensurePushSubscription()
+  }
+  return p
 }

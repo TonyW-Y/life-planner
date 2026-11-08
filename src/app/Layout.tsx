@@ -5,6 +5,7 @@ import { useSetting } from '../lib/useSetting'
 import { Toaster } from './Toaster'
 import { TimerEngine } from '../features/study/useTimer'
 import { TimerPill } from '../features/study/TimerPill'
+import { ReminderEngine } from '../features/reminders/ReminderEngine'
 
 const NAV = [
   { to: '/', label: 'Home', icon: '🏡' },
@@ -103,6 +104,7 @@ export function Layout() {
       <Toaster />
       <TimerEngine />
       <TimerPill />
+      <ReminderEngine />
     </div>
   )
 }

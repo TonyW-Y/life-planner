@@ -4,6 +4,7 @@ import { db, mergeRecords, onLocalChange } from '../../data/db'
 import { supabase, syncConfigured } from '../../data/supabase'
 import { SYNCED_TABLES, type Base, type TableName } from '../../data/types'
 import { registerFlush } from '../../lib/lifecycle'
+import { ensurePushSubscription } from '../reminders/push'
 
 type Status = 'off' | 'signed-out' | 'syncing' | 'synced' | 'offline' | 'error'
 
@@ -162,6 +163,7 @@ export async function startSync() {
     if (evt === 'SIGNED_IN' || evt === 'SIGNED_OUT' || evt === 'INITIAL_SESSION') {
       void subscribe()
       void syncNow()
+      void ensurePushSubscription()
     }
   })
 }
