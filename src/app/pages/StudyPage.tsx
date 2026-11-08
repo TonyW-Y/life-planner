@@ -1,5 +1,6 @@
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { TimerPage } from '../../features/study/timers/TimerPage'
+import { FlashcardsPage } from '../../features/study/flashcards/FlashcardsPage'
 
 const TABS = [
   { to: 'timer', label: 'Timer', emoji: '⏱️' },
@@ -24,7 +25,7 @@ export function StudyPage() {
       <Routes>
         <Route index element={<Navigate to="timer" replace />} />
         <Route path="timer" element={<TimerPage />} />
-        <Route path="cards/*" element={<Soon />} />
+        <Route path="cards/*" element={<FlashcardsPage />} />
         <Route path="plan" element={<Soon />} />
         <Route path="stats" element={<Soon />} />
       </Routes>

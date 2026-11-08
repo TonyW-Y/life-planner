@@ -109,6 +109,7 @@ export interface FlashCard extends Base {
   sub: number
   front: string
   back: string
+  /** id of a Media record (stored once, shared by sibling cards) */
   image?: string
   masks?: Mask[]
   srs: SrsState
@@ -187,6 +188,11 @@ export interface Template extends Base {
   items: TemplateItem[]
 }
 
+export interface Media extends Base {
+  /** compressed image as a data URL */
+  data: string
+}
+
 export interface Setting extends Base {
   value: unknown
 }
@@ -204,6 +210,7 @@ export type TableName =
   | 'budgets'
   | 'templates'
   | 'settings'
+  | 'media'
 
 export const SYNCED_TABLES: TableName[] = [
   'events',
@@ -218,4 +225,5 @@ export const SYNCED_TABLES: TableName[] = [
   'budgets',
   'templates',
   'settings',
+  'media',
 ]

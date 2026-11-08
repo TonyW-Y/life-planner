@@ -7,6 +7,7 @@ import type {
   Deck,
   Exam,
   FlashCard,
+  Media,
   Mood,
   ReviewLog,
   Setting,
@@ -48,6 +49,7 @@ export class CozyDB extends Dexie {
   budgets!: Table<Budget, string>
   templates!: Table<Template, string>
   settings!: Table<Setting, string>
+  media!: Table<Media, string>
   outbox!: Table<OutboxRow, number>
   drafts!: Table<Draft, string>
   snapshots!: Table<Snapshot, number>
@@ -71,6 +73,7 @@ export class CozyDB extends Dexie {
       drafts: 'key',
       snapshots: '++id, at',
     })
+    this.version(2).stores({ media: 'id, updatedAt' })
   }
 }
 
@@ -193,7 +196,7 @@ export async function clearDraft(key: string) {
 
 /* ---------- Backup ---------- */
 const BACKUP_TABLES: TableName[] = [
-  'events', 'tasks', 'decks', 'cards', 'reviews', 'sessions', 'exams', 'moods', 'chats', 'budgets', 'templates', 'settings',
+  'events', 'tasks', 'decks', 'cards', 'reviews', 'sessions', 'exams', 'moods', 'chats', 'budgets', 'templates', 'settings', 'media',
 ]
 
 export async function exportAll(): Promise<string> {
