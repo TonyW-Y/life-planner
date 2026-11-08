@@ -156,9 +156,6 @@ export interface ChatMsg extends Base {
 }
 
 export interface BudgetFixed {
-  sleepHours: number
-  wake: string
-  bed: string
   commuteDaily: number
   mealsDaily: number
   selfCareDaily: number
