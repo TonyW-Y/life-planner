@@ -49,7 +49,7 @@ export function Sheet({ open, onClose, title, children, footer, wide }: Props) {
               </div>
             )}
             <div className="overflow-y-auto px-5 pb-4 pt-2">{children}</div>
-            {footer && <div className="flex flex-wrap gap-2 border-t border-line px-5 pb-[max(1.25rem,calc(env(safe-area-inset-bottom)+0.75rem))] pt-3">{footer}</div>}
+            {footer && <div className="flex flex-wrap gap-2 border-t border-line px-5 pb-[max(1rem,calc(env(safe-area-inset-bottom)+0.5rem))] pt-3">{footer}</div>}
           </motion.div>
         </motion.div>
       )}
