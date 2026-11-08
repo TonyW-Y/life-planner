@@ -89,8 +89,16 @@ export function parseQuickAdd(input: string, now = new Date()): Parsed {
   else if ((m = cut(/\s(?:every\s+year|yearly|annually|each year)\b/i))) repeat = { freq: 'yearly', interval: 1 }
 
   // explicit day list: "every mon wed fri" / "on mon and thu" (only counts as repeat with every/each or a weekly repeat)
-  const dl = text.match(daysList)
-  if (dl && (/^\s(every|each)/i.test(dl[0]) || repeat?.freq === 'weekly')) {
+  const SEP = '(?:\\s*,\\s*|\\s+and\\s+|\\s*&\\s*|\\s+|\\s*/\\s*)'
+  const bare = new RegExp(`\\s(${DAY_RE}(?:${SEP}${DAY_RE})+)\\b`, 'i')
+  const bareOne = new RegExp(`\\s(${DAY_RE})\\b`, 'i')
+  let dl = text.match(daysList)
+  if (!dl) {
+    // "mon wed fri" (2+ days) means weekly; a single bare day only counts if "weekly" was said
+    const b = text.match(bare) ?? (repeat?.freq === 'weekly' ? text.match(bareOne) : null)
+    if (b) dl = b
+  }
+  if (dl && (/^\s(every|each)/i.test(dl[0]) || repeat?.freq === 'weekly' || /\s/.test(dl[1].trim()) || /[,&/]/.test(dl[1]))) {
     text = text.replace(dl[0], ' ')
     const days = [...dl[1].toLowerCase().matchAll(new RegExp(DAY_RE, 'gi'))].map((x) => DAYS[x[0].toLowerCase()]).filter((x) => x !== undefined)
     repeat = { freq: 'weekly', interval: repeat?.interval ?? 1, byweekday: [...new Set(days)].sort() }

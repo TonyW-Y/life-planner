@@ -54,3 +54,24 @@ describe('parseQuickAdd', () => {
     expect(p.start).toBeNull()
   })
 })
+
+describe('bare day lists', () => {
+  it('Lecture mon wed fri 9am every week until Dec 18 for 2h', () => {
+    const p = parseQuickAdd('Lecture mon wed fri 9am every week until Dec 18 for 2h', NOW)
+    expect(p.title).toBe('Lecture')
+    expect(p.repeat).toMatchObject({ freq: 'weekly', byweekday: [0, 2, 4], until: '2026-12-18' })
+    expect(p.start?.getHours()).toBe(9)
+    expect(p.start?.getDay()).toBe(1)
+    expect((p.end!.getTime() - p.start!.getTime()) / 60000).toBe(120)
+  })
+  it('Gym tue/thu 7am', () => {
+    const p = parseQuickAdd('Gym tue/thu 7am', NOW)
+    expect(p.repeat).toMatchObject({ freq: 'weekly', byweekday: [1, 3] })
+    expect(p.title).toBe('Gym')
+  })
+  it('weekly with a single bare day', () => {
+    const p = parseQuickAdd('Small group thursday 2pm weekly', NOW)
+    expect(p.repeat).toMatchObject({ freq: 'weekly', byweekday: [3] })
+    expect(p.start?.getDay()).toBe(4)
+  })
+})

@@ -82,7 +82,7 @@ export function Pom({ color, mood, bow, flip, size = 120, onPet, name }: Props) 
         animate={bodyAnim}
         transition={bodyTransition}
         key={mood}
-        style={{ originY: 1, overflow: 'visible' }}
+        style={{ originY: 1, overflow: 'visible', filter: color === 'white' ? 'drop-shadow(0 0 1.2px rgba(120,90,70,.45))' : 'drop-shadow(0 0 1px rgba(90,50,20,.25))' }}
       >
         {/* shadow */}
         <ellipse cx="60" cy="104" rx="38" ry="5" fill="#000" opacity="0.08" />
