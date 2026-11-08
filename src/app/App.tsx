@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { startLifecycle } from '../lib/lifecycle'
+import { startSync } from '../features/sync/engine'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useSetting, type ThemeName } from '../lib/useSetting'
 import { JoeyDecor } from '../themes/JoeyDecor'
@@ -25,7 +26,10 @@ const THEME_COLOR: Record<ThemeName, string> = {
 export function App() {
   const [theme] = useSetting<ThemeName>('theme', systemTheme())
 
-  useEffect(() => startLifecycle(), [])
+  useEffect(() => {
+    startLifecycle()
+    void startSync()
+  }, [])
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
