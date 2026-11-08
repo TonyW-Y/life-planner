@@ -1,5 +1,7 @@
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { TimerPage } from '../../features/study/timers/TimerPage'
+import { ExamPlanPage } from '../../features/study/planner/ExamPlanPage'
+import { StatsPage } from '../../features/study/stats/StatsPage'
 import { FlashcardsPage } from '../../features/study/flashcards/FlashcardsPage'
 
 const TABS = [
@@ -8,8 +10,6 @@ const TABS = [
   { to: 'plan', label: 'Exam plan', emoji: '🗺️' },
   { to: 'stats', label: 'Progress', emoji: '🌱' },
 ]
-
-const Soon = () => <div className="card">Coming soon 🐾</div>
 
 export function StudyPage() {
   return (
@@ -26,8 +26,8 @@ export function StudyPage() {
         <Route index element={<Navigate to="timer" replace />} />
         <Route path="timer" element={<TimerPage />} />
         <Route path="cards/*" element={<FlashcardsPage />} />
-        <Route path="plan" element={<Soon />} />
-        <Route path="stats" element={<Soon />} />
+        <Route path="plan" element={<ExamPlanPage />} />
+        <Route path="stats" element={<StatsPage />} />
       </Routes>
     </div>
   )

@@ -4,6 +4,8 @@ export interface Interval {
   start: Date
   end: Date
 }
+export const DEFAULT_AWAKE = { wake: '08:00', bed: '23:00' }
+
 export interface Awake {
   /** "HH:mm" */
   wake: string

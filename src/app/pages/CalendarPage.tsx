@@ -27,7 +27,7 @@ import { TaskEditor } from '../../features/tasks/TaskEditor'
 import { QuickAdd } from '../../features/quickadd/QuickAdd'
 import { expandEvents, fmtD, fmtDT, type Occurrence } from '../../lib/recurrence'
 import { guessCategory } from '../../lib/quickAdd'
-import { autoFill, type Awake } from '../../lib/slots'
+import { autoFill, DEFAULT_AWAKE, type Awake } from '../../lib/slots'
 import { toast } from '../../lib/toast'
 import { useSetting } from '../../lib/useSetting'
 import { Segmented } from '../../ui/Segmented'
@@ -35,7 +35,6 @@ import { ChoiceSheet, Sheet } from '../../ui/Sheet'
 import { MultiDatePicker } from '../../ui/MultiDatePicker'
 
 type View = 'day' | 'week' | 'month' | 'agenda'
-export const DEFAULT_AWAKE: Awake = { wake: '08:00', bed: '23:00' }
 const PRI = { must: 0, should: 1, nice: 2 }
 
 export function useOccurrences(from: Date, to: Date) {
