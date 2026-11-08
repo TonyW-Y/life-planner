@@ -26,7 +26,7 @@ A soft, bubbly planner and study buddy made for a med student, with two fluffy P
 **Feel okay**
 - **TT** 🧸, a comfort companion: free AI (Groq) with an offline fallback, plus built-in crisis safety resources.
 - Mood check-ins, a breathing bubble (box, 4-7-8), and affirmations.
-- **Mocha & Mochi**, a brown and a white Pomeranian. They nap while she focuses, stretch on breaks, cheer when she finishes things, cuddle on rough days, and love being petted.
+- **Coco & Teddy**, a brown and a white Pomeranian. They nap while she focuses, stretch on breaks, cheer when she finishes things, cuddle on rough days, and love being petted.
 
 **Cozy looks**: Light, Dark, Brown, and **Joey Mode** 🎀 (pink, with teddy bears, bows, hearts, and sparkles, and the pups wear bows).
 

@@ -8,7 +8,7 @@ export interface PupNames {
   brown: string
   white: string
 }
-export const DEFAULT_PUP_NAMES: PupNames = { brown: 'Mocha', white: 'Mochi' }
+export const DEFAULT_PUP_NAMES: PupNames = { brown: 'Coco', white: 'Teddy' }
 
 const SPEECH: Record<PupMood, string[]> = {
   idle: ['we believe in you!', 'snack break soon?', "you're doing amazing", 'drink some water 💧', 'proud of you'],

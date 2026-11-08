@@ -69,7 +69,7 @@ export function Onboarding() {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-end justify-center bg-black/30 backdrop-blur-sm md:items-center md:p-6">
-      <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="safe-bottom flex max-h-[95dvh] w-full max-w-lg flex-col gap-4 overflow-y-auto rounded-t-[2rem] border border-line bg-surface p-6 shadow-soft md:rounded-[2rem]">
+      <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="flex max-h-[95dvh] w-full max-w-lg flex-col gap-4 overflow-y-auto rounded-t-[2rem] border border-line bg-surface px-6 pb-[max(2.25rem,calc(env(safe-area-inset-bottom)+1rem))] pt-6 shadow-soft md:rounded-[2rem]">
         <div className="flex justify-center">
           <PomPals size={100} speech={false} />
         </div>
